@@ -5,5 +5,9 @@ if(Splitter.exchanges.length === 0) {
   Splitter.init();
 }
 (async () => {
-    await SpreadFinder.findSpreads();
+    const infinity = true;
+
+    while(infinity) {
+      await SpreadFinder.findSpreads();
+    }
 })();
