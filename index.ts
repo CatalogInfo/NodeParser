@@ -7,7 +7,10 @@ if(Splitter.exchanges.length === 0) {
 (async () => {
     const infinity = true;
 
+    let i = 0;
     while(infinity) {
+      i ++;
+      console.log("loop n " + i);
       await SpreadFinder.findSpreads();
     }
 })();
