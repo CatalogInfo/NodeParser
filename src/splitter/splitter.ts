@@ -12,7 +12,7 @@ export default class Splitter {
     this.exchanges.push(new Exchange("huobi", "", "https://www.htx.com/en-us/trade/", "_", true)); // basequote api, base_quote link dolboebi
     this.exchanges.push(new Exchange("mexc", "", "https://www.mexc.com/exchange/", "_")); //BASEQUOTE api, BASE_QUOTE link tozhe dauni
     this.exchanges.push(new Exchange("bybit", "", "https://www.bybit.com/en-US/trade/spot/", "/")); // BASEQUOTE , BASE/QUOTE link eblani
-    this.exchanges.push(new Exchange("kraken", "", "https://pro.kraken.com/app/trade/", "-")); // BASEQUOTE , BASE/QUOTE link eblani
+    this.exchanges.push(new Exchange("kraken", "", "https://pro.kraken.com/app/trade/", "")); // BASEQUOTE , BASE/QUOTE link eblani
   }
 
   static async split() {
@@ -44,8 +44,8 @@ export default class Splitter {
     // Count the occurrences of each pair (base and quote) in the arrays
     for (const pairs of arrayOfPairs) {
         for (const pair of pairs) {
-            const { base, quote } = pair;
-            const key = `${base}_${quote}`;
+            const { base } = pair;
+            const key = `${base}`;
             if (key in pairCounts) {
                 pairCounts[key]++;
             } else {
@@ -65,7 +65,7 @@ export default class Splitter {
     const outputArray: Token[][] = [];
     for (const pairs of arrayOfPairs) {
         const outputPairs = pairs.filter(pair => {
-            const key = `${pair.base}_${pair.quote}`;
+            const key = `${pair.base}`;
             return repeatedPairs.has(key);
         });
         outputArray.push(outputPairs);
